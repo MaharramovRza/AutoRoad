@@ -1,0 +1,117 @@
+@media only screen and (max-width:576px) {
+
+  /* My Defaults*/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* End My Defaults */
+
+  #navbar {
+    display: none;
+  }
+
+  /* MenuBar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    background-color: rgb(0, 0, 0) !important;
+    z-index: 99999;
+  }
+
+  #logo>span:first-child {
+    color: white;
+  }
+
+  #navbarNav a {
+    color: white;
+  }
+
+  #navbarNav a:hover {
+    color: #F7B71D;
+  }
+
+  #navbarNav a.active {
+    color: #F7B71D;
+  }
+
+  /* ManuBar End */
+
+
+
+  /* Banner */
+  #banner {
+    height: 100vh;
+    position: relative;
+  }
+
+  #ban-title {
+    width: 80%;
+    color: white;
+    position: absolute;
+    top: 140px;
+  }
+
+  #ban-title>h1 {
+    font-size: 40px;
+  }
+
+  /* Banner End */
+
+
+  /* FormSelect */
+
+
+  /* FormSelect end */
+
+
+  /* Service */
+  #ourservice{
+    margin: 80px 0;
+  }
+  .title > h5 {
+    font-size: 12px;
+  }
+  .title > h1{
+    font-size:28px;
+    text-transform: capitalize;
+  }
+  #services{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service {
+    width: 100%;
+  }
+  .service i{
+    font-size: 20px;
+  }
+  .service h4{
+    font-size: 16px;
+  }
+  .service p {
+    font-size: 14px;
+  }
+  /* Service End */
+
+
+
+}
