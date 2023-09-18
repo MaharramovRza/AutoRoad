@@ -101,7 +101,7 @@ li {
 #banner{
   position: relative;
   height: 100vh;
-  background-image: url("images/bg_1.jpg");
+  background-image: url("../images/bg_1.jpg");
   background-blend-mode: multiply; /*Bunun sayesinde qaralti verdi */
   background-color: rgba(0, 0, 0, .4);
   /* background-position: center; */
@@ -360,7 +360,7 @@ footer a:hover {
 #banner-ourcar{
   position: relative;
   height: 90vh;
-  background-image: url("images/bg_2.jpg");
+  background-image: url("../images/bg_2.jpg");
   /* background-blend-mode: multiply; Bunun sayesinde qaralti verdi  */
   background-color: rgba(0, 0, 0, .4);
   /* background-position: center; */
