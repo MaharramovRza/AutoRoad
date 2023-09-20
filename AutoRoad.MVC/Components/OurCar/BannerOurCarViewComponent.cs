@@ -2,7 +2,7 @@
 
 namespace AutoRoad.MVC.Components.OurCar
 {
-    public class BannerOurCar : ViewComponent
+    public class BannerOurCarViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

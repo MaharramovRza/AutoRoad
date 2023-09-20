@@ -4,9 +4,9 @@ namespace AutoRoad.MVC.Controllers
 {
     public class OurCarController : Controller
     {
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int id)
         {
-            return View();
+            return View(id);
         }
     }
 }

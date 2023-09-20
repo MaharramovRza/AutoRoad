@@ -40,7 +40,7 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Created).HasColumnType("datetime");
-            entity.Property(e => e.Name).HasMaxLength(1);
+            entity.Property(e => e.Name).HasMaxLength(30);
             entity.Property(e => e.Updated).HasColumnType("datetime");
         });
 

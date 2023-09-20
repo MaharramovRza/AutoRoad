@@ -10,6 +10,7 @@ public partial class CarPhoto
     public string Name { get; set; } = null!;
 
     public int ModelId { get; set; }
+    public bool IsMain { get; set; }
 
     public DateTime? Created { get; set; }
 

@@ -370,3 +370,14 @@ footer a:hover {
   overflow: hidden;
 }
 /* OurCar Page End */
+
+/* Login Page */
+.background-radial-gradient {
+    background-image: url("../images/bg_2.jpg");
+    /* object-fit: cover; */
+    /*height: 100vh;*/
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* Login Page End */
