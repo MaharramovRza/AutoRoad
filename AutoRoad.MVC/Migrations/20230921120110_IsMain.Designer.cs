@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoRoad.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230920110934_IsMain")]
+    [Migration("20230921120110_IsMain")]
     partial class IsMain
     {
         /// <inheritdoc />
@@ -35,8 +35,8 @@ namespace AutoRoad.MVC.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("datetime");
@@ -83,8 +83,8 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("Doors")
-                        .HasColumnType("int");
+                    b.Property<byte>("Doors")
+                        .HasColumnType("tinyint");
 
                     b.Property<int>("FuelId")
                         .HasColumnType("int");
@@ -101,8 +101,8 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 0)");
 
-                    b.Property<int>("Seats")
-                        .HasColumnType("int");
+                    b.Property<byte>("Seats")
+                        .HasColumnType("tinyint");
 
                     b.Property<int>("TransmissionId")
                         .HasColumnType("int");
@@ -132,14 +132,14 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsMain")
                         .HasColumnType("bit");
-
-                    b.Property<int>("ModelId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -152,7 +152,7 @@ namespace AutoRoad.MVC.Migrations
                     b.HasKey("Id")
                         .HasName("PK_CARPHOTOS");
 
-                    b.HasIndex("ModelId");
+                    b.HasIndex("CarId");
 
                     b.ToTable("CarPhotos");
                 });
@@ -340,13 +340,13 @@ namespace AutoRoad.MVC.Migrations
 
             modelBuilder.Entity("AutoRoad.MVC.Models.CarPhoto", b =>
                 {
-                    b.HasOne("AutoRoad.MVC.Models.Model", "Model")
+                    b.HasOne("AutoRoad.MVC.Models.Car", "Car")
                         .WithMany("CarPhotos")
-                        .HasForeignKey("ModelId")
+                        .HasForeignKey("CarId")
                         .IsRequired()
                         .HasConstraintName("CarPhotos_fk0");
 
-                    b.Navigation("Model");
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("AutoRoad.MVC.Models.Model", b =>
@@ -381,6 +381,11 @@ namespace AutoRoad.MVC.Migrations
                     b.Navigation("Models");
                 });
 
+            modelBuilder.Entity("AutoRoad.MVC.Models.Car", b =>
+                {
+                    b.Navigation("CarPhotos");
+                });
+
             modelBuilder.Entity("AutoRoad.MVC.Models.Fuel", b =>
                 {
                     b.Navigation("Cars");
@@ -388,8 +393,6 @@ namespace AutoRoad.MVC.Migrations
 
             modelBuilder.Entity("AutoRoad.MVC.Models.Model", b =>
                 {
-                    b.Navigation("CarPhotos");
-
                     b.Navigation("Cars");
                 });
 

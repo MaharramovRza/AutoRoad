@@ -17,7 +17,5 @@ public partial class Model
 
     public virtual Brand Brand { get; set; } = null!;
 
-    public virtual ICollection<CarPhoto> CarPhotos { get; set; } = new List<CarPhoto>();
-
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 }

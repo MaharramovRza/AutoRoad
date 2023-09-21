@@ -9,12 +9,12 @@ public partial class CarPhoto
 
     public string Name { get; set; } = null!;
 
-    public int ModelId { get; set; }
+    public int CarId { get; set; }
     public bool IsMain { get; set; }
 
     public DateTime? Created { get; set; }
 
     public DateTime? Updated { get; set; }
 
-    public virtual Model Model { get; set; } = null!;
+    public virtual Car Car { get; set; } = null!;
 }

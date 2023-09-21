@@ -7,10 +7,13 @@ namespace AutoRoad.MVC.Data;
 
 public partial class ApplicationDbContext : DbContext
 {
-
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public ApplicationDbContext()
     {
+    }
 
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
     }
 
     public virtual DbSet<Ban> Bans { get; set; }
@@ -31,6 +34,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer("Name=Database:ConnectionString");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,7 +45,7 @@ public partial class ApplicationDbContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Created).HasColumnType("datetime");
-            entity.Property(e => e.Name).HasMaxLength(30);
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Updated).HasColumnType("datetime");
         });
 
@@ -93,8 +98,8 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Updated).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Model).WithMany(p => p.CarPhotos)
-                .HasForeignKey(d => d.ModelId)
+            entity.HasOne(d => d.Car).WithMany(p => p.CarPhotos)
+                .HasForeignKey(d => d.CarId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CarPhotos_fk0");
         });
