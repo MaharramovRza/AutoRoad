@@ -13,3 +13,5 @@ app.MapControllerRoute("default",
     "{controller=Home}/{action=Index}");
 
 app.Run();
+
+//Modala Car'in Icludelarini gpnderende getmir

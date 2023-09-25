@@ -19,9 +19,9 @@ public partial class Car
 
     public int BanId { get; set; }
 
-    public byte Doors { get; set; }
+    public int Doors { get; set; }
 
-    public byte Seats { get; set; }
+    public int Seats { get; set; }
 
     public bool HasGarage { get; set; }
 

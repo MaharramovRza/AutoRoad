@@ -24,21 +24,11 @@ namespace AutoRoad.MVC.Components.OurCar
             List<CarDto> cars = await _context.Cars
                                               .Include(c => c.Model)
                                               .ThenInclude(c => c.Brand)
-                                              .Include(c => c.Ban)
-                                              .Include(c => c.Fuel)
-                                              .Include(c => c.Transmission)
                                               .Select(c => new CarDto
                                               {
                                                   CarId = c.Id,
-                                                  Model = c.Model.Name,
-                                                  Brand = c.Model.Brand.Name,
-                                                  Ban = c.Ban.Name,
-                                                  Fuel = c.Fuel.Name,
-                                                  Transmission = c.Transmission.Name,
-                                                  Doors = c.Doors,
-                                                  Seats = c.Seats,
-                                                  Price = c.Price,
-                                                  Year = c.Year,
+                                                  ModelName = c.Model.Name,
+                                                  BrandName = c.Model.Brand.Name,
                                                   Photo = c.CarPhotos
                                                            .Where(p => p.IsMain == true)
                                                            .Select(p => _configuration["Files:Cars"] + p.Name)
