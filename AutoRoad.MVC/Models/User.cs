@@ -15,7 +15,7 @@ public partial class User
 
     public string Phone { get; set; } = null!;
 
-    public string Password { get; set; } = null!;
+    public byte[] Password { get; set; } = null!;
 
     public int UserRoleId { get; set; }
 

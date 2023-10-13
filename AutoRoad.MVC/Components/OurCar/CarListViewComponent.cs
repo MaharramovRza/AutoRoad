@@ -22,8 +22,6 @@ namespace AutoRoad.MVC.Components.OurCar
         {
 
             List<CarDto> cars = await _context.Cars
-                                              .Include(c => c.Model)
-                                              .ThenInclude(c => c.Brand)
                                               .Select(c => new CarDto
                                               {
                                                   CarId = c.Id,

@@ -33,12 +33,6 @@ namespace AutoRoad.MVC.Controllers
             {
                 CarDto result = await _context.Cars
                                               .Where(c => c.Id == id)
-                                              .Include(c => c.Model)
-                                              .ThenInclude(c => c.Brand)
-                                              .Include(c => c.Ban)
-                                              .Include(c => c.Transmission)
-                                              .Include(c => c.Fuel)
-                                              .Include(c => c.CarPhotos)
                                               .Select(c => new CarDto
                                               {
                                                  ModelName = c.Model.Name,

@@ -1,4 +1,8 @@
-﻿<section class="background-radial-gradient overflow-hidden">
+﻿@using AutoRoad.MVC.ViewModels.Account;
+@model RegisterModel
+
+
+<section class="background-radial-gradient overflow-hidden">
 
 
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
@@ -21,41 +25,41 @@
 
                 <div class="card bg-glass">
                     <div class="card-body px-4 py-5 px-md-5">
-                        <form>
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            @* <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-outline">
-                                        <input type="text" id="form3Example1" class="form-control" />
-                                        <label class="form-label" for="form3Example1">First name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-outline">
-                                        <input type="text" id="form3Example2" class="form-control" />
-                                        <label class="form-label" for="form3Example2">Last name</label>
-                                    </div>
-                                </div>
-                            </div> *@
-                          
+                        <h3 class="text-center mb-5">Register</h3>
+                        @Html.ValidationSummary(true)
+                        <form method="post" action="@Url.Action("Login","Account")">
+
+
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control" />
-                                <label class="form-label" for="form3Example3">Email address</label>
+                                @Html.ValidationMessageFor(c => c.Name)
+                                <input value="@Model?.Name" id="name" name="name" type="text" class="form-control" />
+                                <label class="form-label" for="name">Name</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="form3Example4" class="form-control" />
-                                <label class="form-label" for="form3Example4">Password</label>
+                                @Html.ValidationMessageFor(c => c.Surname)
+                                <input value="@Model?.Surname" id="surname" name="surname" type="text" class="form-control" />
+                                <label class="form-label" for="surname">Surname</label>
+                            </div>
+                           
+                            <div class="form-outline mb-4">
+                                @Html.ValidationMessageFor(c => c.Email)
+                                <input value="@Model?.Email" id="email" name="email" type="email" class="form-control" />
+                                <label class="form-label" for="email">Email address</label>
                             </div>
 
-
+                            <div class="form-outline mb-4">
+                                @Html.ValidationMessageFor(c => c.Password)
+                                <input id="email" name="password" type="password" class="form-control" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
 
 
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">
-                                Sign up
+                                Register
                             </button>
 
                             <!-- Register buttons -->
