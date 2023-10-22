@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoRoad.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230921120110_IsMain")]
-    partial class IsMain
+    [Migration("20231022145715_test1")]
+    partial class test1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Ban", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
@@ -50,7 +53,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Brand", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
@@ -72,7 +78,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Car", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BanId")
                         .HasColumnType("int");
@@ -83,8 +92,8 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<byte>("Doors")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Doors")
+                        .HasColumnType("int");
 
                     b.Property<int>("FuelId")
                         .HasColumnType("int");
@@ -101,8 +110,8 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 0)");
 
-                    b.Property<byte>("Seats")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
 
                     b.Property<int>("TransmissionId")
                         .HasColumnType("int");
@@ -130,7 +139,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.CarPhoto", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CarId")
                         .HasColumnType("int");
@@ -138,8 +150,11 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("bit");
+                    b.Property<bool?>("IsMain")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -160,7 +175,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Fuel", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
@@ -182,7 +200,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Model", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
@@ -209,7 +230,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.Transmission", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
@@ -231,7 +255,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.User", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
@@ -284,7 +311,10 @@ namespace AutoRoad.MVC.Migrations
             modelBuilder.Entity("AutoRoad.MVC.Models.UserRole", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");

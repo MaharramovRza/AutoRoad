@@ -1,4 +1,6 @@
 ﻿using AutoRoad.MVC.Data;
+using AutoRoad.MVC.Enums;
+using AutoRoad.MVC.Models;
 using AutoRoad.MVC.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -65,16 +67,16 @@ namespace AutoRoad.MVC.Controllers
 
             };
 
-            var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             //SignInAsync Funksiyasi,verdiyimiz melumatlari Cookiye gonderir
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                                           new ClaimsPrincipal(claimsIdentity));
-                                         
 
-            return RedirectToAction("Index","Home");
 
-                
+            return RedirectToAction("Index", "Home");
+
+
         }
 
         [HttpGet]
@@ -94,12 +96,42 @@ namespace AutoRoad.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel request)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return View(request);   
+                return View(request);
             }
 
-            return RedirectToAction("Login","Account");
+            var user = _context.Users.Where(c => c.Email == request.Email).FirstOrDefault();
+
+            if (user is not null)
+            {
+                ModelState.AddModelError("", "Email is already exists");
+                return View(request);
+            }
+
+            user = new User();
+            user.Name = request.Name;
+            user.Surname = request.Surname;
+            user.Email = request.Email;
+            user.RegisterDate = DateTime.Now;
+            user.Phone = "503418919";
+            user.UserRoleId = 1;
+            user.UserStatusId = (int)UserStatus.Active;
+            user.Created = DateTime.Now;
+            user.Updated = DateTime.Now;
+
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                var buffer = Encoding.UTF8.GetBytes(request.Password);
+                var hash = sha256.ComputeHash(buffer);
+
+                user.Password = hash;
+            }
+
+            await _context.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Login", "Account");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AutoRoad.MVC.Controllers
         private readonly IConfiguration _configuration;
 
 
-        public OurCarController(ApplicationDbContext context,IConfiguration configuration)
+        public OurCarController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -35,14 +35,14 @@ namespace AutoRoad.MVC.Controllers
                                               .Where(c => c.Id == id)
                                               .Select(c => new CarDto
                                               {
-                                                 ModelName = c.Model.Name,
-                                                 BrandName = c.Model.Brand.Name,
-                                                 FuelType = c.Fuel.Name,
-                                                 BanType = c.Ban.Name,
-                                                 TransmissionType = c.Transmission.Name,
-                                                 Price = c.Price,
-                                                 GarageStatusId = (int)GarageStatus.InGarage,
-                                                 Photo = c.CarPhotos                                                       
+                                                  ModelName = c.Model.Name,
+                                                  BrandName = c.Model.Brand.Name,
+                                                  FuelType = c.Fuel.Name,
+                                                  BanType = c.Ban.Name,
+                                                  TransmissionType = c.Transmission.Name,
+                                                  Price = c.Price,
+                                                  GarageStatusId = (int)GarageStatus.InGarage,
+                                                  Photo = c.CarPhotos
                                                           .Select(p => _configuration["Files:Cars"] + p.Name)
                                                           .FirstOrDefault()
 

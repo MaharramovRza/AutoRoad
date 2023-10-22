@@ -31,7 +31,7 @@ namespace AutoRoad.MVC.Components.OurCar
                                                            .Where(p => p.IsMain == true)
                                                            .Select(p => _configuration["Files:Cars"] + p.Name)
                                                            .FirstOrDefault()
-                                              
+
                                               })
                                               .ToListAsync();
 
