@@ -41,15 +41,43 @@
 
             </ul>
 
-            <div style="display: flex;">
-                <a id="usericon" href="@Url.Action("Register","Account")">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                </a>
-                /
-                <a id="usericon" href="@Url.Action("Login","Account")">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </div>
+            @{
+                var name = Context.User.Claims.Where(c => c.Type == "Name").FirstOrDefault();
+                var surname = Context.User.Claims.Where(c => c.Type == "Surname").FirstOrDefault();
+            }
+
+
+           @if(Context.User.Identity.IsAuthenticated)
+           {
+                <div style="display: flex;">
+                    <a id="usericon" href="@Url.Action("Login","Account")">
+                        @name?.Value[0] @surname?.Value[0]                             
+                    </a>
+                    /
+                    <a id="usericon" href="@Url.Action("LogOut","Account")">
+                        @* <i class="fa-solid fa-right-to-bracket"></i> *@
+                        SO
+                                           
+                    </a>
+                </div>
+
+            }
+            else
+            {
+                <div style="display: flex;">
+                    <a id="usericon" href="@Url.Action("Register","Account")">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </a>
+                    /
+                    <a id="usericon" href="@Url.Action("Login","Account")">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </div>
+            }
+           
+            
+
+           
 
 
             <!-- <i id="bar" class="fa-solid fa-bars"></i> -->

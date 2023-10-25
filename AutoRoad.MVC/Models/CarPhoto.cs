@@ -11,11 +11,11 @@ public partial class CarPhoto
 
     public int CarId { get; set; }
 
+    public bool IsMain { get; set; }
+
     public DateTime? Created { get; set; }
 
     public DateTime? Updated { get; set; }
-
-    public bool? IsMain { get; set; }
 
     public virtual Car Car { get; set; } = null!;
 }

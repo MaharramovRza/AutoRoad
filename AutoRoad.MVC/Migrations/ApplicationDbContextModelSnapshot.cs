@@ -147,11 +147,8 @@ namespace AutoRoad.MVC.Migrations
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<bool?>("IsMain")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(CONVERT([bit],(0)))");
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -270,10 +267,10 @@ namespace AutoRoad.MVC.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Password")
+                    b.Property<byte[]>("Password")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varbinary(50)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
