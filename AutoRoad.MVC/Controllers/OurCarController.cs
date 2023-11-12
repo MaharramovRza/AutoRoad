@@ -37,6 +37,7 @@ namespace AutoRoad.MVC.Controllers
                                               {
                                                   ModelName = c.Model.Name,
                                                   BrandName = c.Model.Brand.Name,
+                                                  Year = c.Year,
                                                   FuelType = c.Fuel.Name,
                                                   BanType = c.Ban.Name,
                                                   TransmissionType = c.Transmission.Name,

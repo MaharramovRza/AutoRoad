@@ -16,8 +16,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 
 var app = builder.Build();
 app.UseStaticFiles();
+
+app.MapControllerRoute(name: "admin",
+                       pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
 app.MapControllerRoute("default",
     "{controller=Home}/{action=Index}");
+
 
 
 
@@ -27,4 +32,5 @@ app.UseAuthorization();
 
 app.Run();
 
-//Modala Car'in Icludelarini gpnderende getmir
+
+

@@ -51,12 +51,12 @@
            {
                 <div style="display: flex;">
                     <a id="usericon" href="@Url.Action("Login","Account")">
-                        @name?.Value[0] @surname?.Value[0]                             
+                        @name?.Value[0].ToString().ToUpper()@surname?.Value[0].ToString().ToUpper()                           
                     </a>
-                    /
+                    <h3>/</h3>
                     <a id="usericon" href="@Url.Action("LogOut","Account")">
-                        @* <i class="fa-solid fa-right-to-bracket"></i> *@
-                        SO
+                         <i class="fa-solid fa-right-to-bracket"></i> 
+                        
                                            
                     </a>
                 </div>

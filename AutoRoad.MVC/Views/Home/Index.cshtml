@@ -15,6 +15,67 @@
 <!-- Choose Car -->
 @await Component.InvokeAsync("ChooseCar")
 <!-- Choose Car End -->
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('.btn_car_dtl').click(function (e) {
+                e.preventDefault();
+                let carId = $(this).attr('data-id');
+
+                $.ajax({
+                    url: '@Url.Action("GetCar","Home")',
+                    method: "GET",
+                    data: { id: carId },
+                    success: function (response) {
+                        if (response.status == 200) {
+                            console.log("Hello")
+                            let myModal = `
+                                           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+                                                 style="background-color: rgba(0, 0, 0,.3); backdrop-filter: blur(8px);">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
+                                                            <span class="close" data-dismiss="modal" style="color: black;cursor: pointer;">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="modal-body row" style="">
+
+                                                          <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
+                                                              <h5>Model : ${response.data.modelName}</h5>
+                                                              <h5>Brand : ${response.data.brandName}</h5>
+                                                              <h5>Fuel : ${response.data.fuelType}</h5>
+                                                              <h5>Ban : ${response.data.banType}</h5>
+                                                              <h5>Transmission : ${response.data.transmissionType}</h5>
+                                                              <h5>Daily Price : ${response.data.price}$</h5>
+                                                          </div>
+
+                                                            <img style="width:240px" src="${response.data.photo}" alt="">
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a data-dismiss="modal">Close</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    `;
+
+                            $('#car_detail_modal').html(myModal);
+
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+}
 
 
 

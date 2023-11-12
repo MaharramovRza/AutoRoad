@@ -4,7 +4,7 @@
 @await Component.InvokeAsync("BannerOurCar")
 <!-- Our Car Banner End-->
 <!--  Car List-->
-@await Component.InvokeAsync("CarList")
+@await Component.InvokeAsync("CarList") 
 <!--  Car List End-->
 @section Scripts{
   
@@ -13,7 +13,7 @@
             $('.btn_car_dtl').click(function (e) {
                 e.preventDefault();
                 let carId = $(this).attr('data-id');
-
+                  
                 $.ajax({
                     url: '@Url.Action("GetCar","OurCar")',
                     method: "GET",
@@ -38,6 +38,7 @@
                                                   <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
                                                       <h5>Model : ${response.data.modelName}</h5>
                                                       <h5>Brand : ${response.data.brandName}</h5>
+                                                      <h5>Year : ${response.data.year}</h5>
                                                       <h5>Fuel : ${response.data.fuelType}</h5>
                                                       <h5>Ban : ${response.data.banType}</h5>
                                                       <h5>Transmission : ${response.data.transmissionType}</h5>
