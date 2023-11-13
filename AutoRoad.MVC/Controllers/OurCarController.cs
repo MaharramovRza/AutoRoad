@@ -21,8 +21,10 @@ namespace AutoRoad.MVC.Controllers
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1)
         {
+            
+            ViewBag.Page = page;
             return View();
         }
 

@@ -1,6 +1,8 @@
 ﻿using AutoRoad.MVC.Data;
 using AutoRoad.MVC.DTOs;
 using AutoRoad.MVC.Models;
+using AutoRoad.MVC.ViewModels.OurCar;
+using AutoRoad.MVC.ViewModels.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +19,7 @@ namespace AutoRoad.MVC.Components.OurCar
             _configuration = configuration;
 
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int page)
         {
 
             List<CarDto> cars = await _context.Cars
@@ -37,10 +39,20 @@ namespace AutoRoad.MVC.Components.OurCar
                                                            .FirstOrDefault()
 
                                               })
-                                              .ToListAsync();
+                                              .Skip((page-1)*8).Take(8).ToListAsync();
 
+            var count = await _context.Cars.CountAsync();
+            var pageCount = Math.Ceiling(count / (decimal)8);
 
-            return View(cars);
+            var carModel = new OurCarModel
+            {
+                Cars = cars,
+                Url = "/OurCar/List",
+                Page = page,
+                PageCount = (int)pageCount
+            };
+
+            return View(carModel);
         }
     }
 }

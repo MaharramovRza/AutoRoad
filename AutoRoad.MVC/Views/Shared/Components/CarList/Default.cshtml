@@ -1,11 +1,11 @@
-﻿@using AutoRoad.MVC.DTOs;
-@model List<CarDto>
+﻿@using AutoRoad.MVC.ViewModels.OurCar;
+@model OurCarModel
 <!-- Car list -->
 <div class="container pt-5 pb-5">
     <div id="cars" class="row mb-5">
        
 
-        @foreach(var car in Model)
+        @foreach(var car in Model.Cars )
         {
             
          
@@ -33,22 +33,18 @@
         }
     </div>
 
-    <div style="display: flex;justify-content: center;">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> < </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#"> > </a>
-                </li>
-            </ul>
-        </nav>
+    <!-- Pagination  -->
+    <div class="paginating-container pagination-solid" style="display:flex;justify-content:center">
+
+        <ul class="pagination">
+            <li class="prev"><a href="javascript:void(0);">Prev</a></li>
+            @for (var i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="@(Model.Page == i ? "active" : "")"><a href="@(Model.Url + "?page="+i)">@i</a></li>
+            }
+            <li class="next"><a href="javascript:void(0);">Next</a></li>
+        </ul>
+
     </div>
 </div>
 <!-- Car list end -->
