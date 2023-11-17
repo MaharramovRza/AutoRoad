@@ -36,7 +36,7 @@ namespace AutoRoad.MVC.Components.Home
                                                            .FirstOrDefault()
 
                                               })
-                                              .ToListAsync();
+                                              .Take(8).ToListAsync();
 
 
             return View(cars);

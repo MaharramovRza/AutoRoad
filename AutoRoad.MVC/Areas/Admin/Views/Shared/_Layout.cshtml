@@ -20,7 +20,9 @@
     <link href="~/admin/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="~/admin/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    @RenderSection("BrandStyles",false)  @* Bu o demekdirki hemin view isleyende bunu ise sal *@
+    @RenderSection("BrandListStyles",false)  @* Bu o demekdirki hemin view isleyende bunu ise sal *@
+    @RenderSection("BrandAddStyles",false)
+    @RenderSection("ModelListStyles",false)
 
 </head>
 <body class="alt-menu sidebar-noneoverflow">
@@ -125,7 +127,7 @@
                     </li>
 
                     <li class="menu">
-                        <a href="apps_mailbox.html" aria-expanded="false" class="dropdown-toggle">
+                        <a href="@Url.Action("List","Model")" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                 <span>Models</span>
@@ -175,7 +177,9 @@
             App.init();
         });
     </script>
-    @RenderSection("BrandScripts",false)
+    @RenderSection("BrandListScripts",false)
+    @RenderSection("BrandAddScripts",false)
+    @RenderSection("ModelListScripts",false)
     <script src="~/admin/assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->

@@ -3,12 +3,12 @@
 <div class="paginating-container pagination-solid" style="display:flex;justify-content:center">
 
     <ul class="pagination">
-        <li class="prev"><a href="javascript:void(0);">Prev</a></li>
+        @* <li class="prev"><a href="javascript:void(0);">Prev</a></li> *@
         @for(var i = 1; i <= Model.PageCount; i++)
         {
             <li class="@(Model.Page == i ? "active" : "")"><a href="@(Model.Url + "?page="+i)">@i</a></li>
         }
-        <li class="next"><a href="javascript:void(0);">Next</a></li>
+        @* <li class="next"><a href="javascript:void(0);">Next</a></li> *@
     </ul>
 
 </div>
