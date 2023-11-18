@@ -1,10 +1,10 @@
-﻿@model BrandEditModel
+﻿@model UserEditModel
 <div id="basic" class="col-lg-12 layout-spacing">
     <div class="statbox widget box box-shadow">
         <div class="widget-header">
             <div class="row">
                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                    <h4>Edit Brand</h4>
+                    <h4>Edit UserRole</h4>
                 </div>
             </div>
         </div>
@@ -12,12 +12,12 @@
 
             <div class="row">
                 <div class="col-lg-6 col-12 mx-auto">
-                    <form method="post" action="@Url.Action("Edit","Brand")">
-                        <input type="hidden" name="BrandId" value="@Model.BrandId"></input>
+                    <form method="post" action="@Url.Action("Edit","User")">
+                        <input type="hidden" value="@Model?.UserId"></input>
                         @Html.ValidationSummary(true)
                         <div class="form-group">
-                            @Html.ValidationMessageFor(c => c.Name)
-                            <input value="@Model?.Name" id="t-text" type="text" name="name" placeholder="Brand.." class="form-control" required>
+                            @Html.ValidationMessageFor(c => c.UserRole)
+                            <input value="@Model?.UserRole" id="t-text" type="text" name="userrole" placeholder="UserRole.." class="form-control" required>
                             <input type="submit" name="txt" class="mt-4 btn btn-primary">
                         </div>
                     </form>
@@ -28,13 +28,13 @@
     </div>
 
 
-    @section BrandEditStyles{
+    @section BrandAddStyles{
         <!--  BEGIN CUSTOM STYLE FILE  -->
         <link href="assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
         <!--  END CUSTOM STYLE FILE  -->
     }
 
 
-    @section BrandEditScripts {
+    @section BrandAddScripts {
         <script src="assets/js/scrollspyNav.js"></script>
     }

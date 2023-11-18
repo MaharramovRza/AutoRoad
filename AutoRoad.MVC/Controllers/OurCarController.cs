@@ -44,7 +44,7 @@ namespace AutoRoad.MVC.Controllers
                                                   BanType = c.Ban.Name,
                                                   TransmissionType = c.Transmission.Name,
                                                   Price = c.Price,
-                                                  GarageStatusId = (int)GarageStatus.InGarage,
+                                                  GarageStatusId = (int)CarStatus.Active,
                                                   Photo = c.CarPhotos
                                                           .Select(p => _configuration["Files:Cars"] + p.Name)
                                                           .FirstOrDefault()

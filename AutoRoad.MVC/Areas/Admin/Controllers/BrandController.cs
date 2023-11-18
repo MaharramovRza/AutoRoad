@@ -59,9 +59,9 @@ namespace AutoRoad.MVC.Areas.Admin.Controllers
                 return View(request);
             }
 
-            var brands = await _context.Brands.ToListAsync();
+            //var brands = await _context.Brands.ToListAsync();
 
-            var brand = _context.Brands.Where(c => c.Name.ToLower() ==  request.Name.ToLower()).FirstOrDefault();
+            var brand = await _context.Brands.Where(c => c.Name.ToLower() ==  request.Name.ToLower()).FirstOrDefaultAsync();
 
             if(brand != null)
             {

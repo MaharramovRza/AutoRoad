@@ -1,0 +1,140 @@
+﻿@model CarAddModel
+<div id="basic" class="col-lg-12 layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4>Add Car</h4>
+                </div>
+            </div>
+        </div>
+        <div class="widget-content widget-content-area">
+
+            <div class="row">
+                <div class="col-lg-6 col-12 mx-auto">
+                    <form method="post" action="@Url.Action("Add","Car")">
+                        
+                        <div class="form-group">
+                            
+                            @* <input value="@Model?.BrandName" id="t-text" type="text" name="name" placeholder="Brand.." class="form-control" required> *@
+
+                             
+
+                            <div class="form-group">
+                                <label for="model">Model</label>
+                                @* <input id="model" value="@Model?.ModelId" id="t-text" type="text" name="ModelId" placeholder="Model.." class="form-control" required> *@
+                                <select id="model" class="form-control  basic">
+                                    <option selected="selected">---</option>
+                                    @foreach(var modl in Model.Models)
+                                    {
+                                        <option value="@modl.ModelId">@modl.ModelName</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input id="year" value="@Model?.Year" id="t-text" type="text" name="year" placeholder="Year.." class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input id="price" value="@Model?.Price" id="t-text" type="text" name="price" placeholder="Price.." class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuel">Fuel</label>
+                                @* <input id="fuel" value="@Model?.FuelType" id="t-text" type="text" name="fueltype" placeholder="Fuel.." class="form-control" required> *@
+                                <select id="fuel" class="form-control  basic">
+                                    <option selected="selected">---</option>
+                                    @foreach (var fuels in Model.FuelTypes)
+                                    {
+                                        <option value="@fuels.FuelId">@fuels.FuelType</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ban" >Ban</label>
+                                @* <input id="ban" value="@Model?.BanType" id="t-text" type="text" name="bantype" placeholder="Ban.." class="form-control" required> *@
+                                <select id="ban" class="form-control  basic">
+                                    <option selected="selected">---</option>
+                                    @foreach (var bans in Model.BanTypes)
+                                    {
+                                        <option value="@bans.BanId">@bans.BanType</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tms">Transmission</label>
+                                @* <input id="tms" value="@Model?.TransmissionType" id="t-text" type="text" name="transmissiontype" placeholder="Transmission.." class="form-control" required> *@
+                                <select id="tms" class="form-control  basic">
+                                    <option selected="selected">---</option>
+                                    @foreach (var tms in Model.TransmissionTypes)
+                                    {
+                                        <option value="@tms.TransmissionId">@tms.TransmissionType</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="door">Doors</label>
+                                <input id="door" value="@Model?.Doors" id="t-text" type="text" name="doors" placeholder="Doors.." class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="seat">Seats</label>
+                                 <input id="seat" value="@Model?.Seats" id="t-text" type="text" name="seats" placeholder="Seats.." class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="count">Count</label>
+                               <input id="count" value="@Model?.Count" id="t-text" type="text" name="count" placeholder="CarCount.." class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ismain">IsMain</label>
+                                    @* <input id = "ismain" value="@Model?.IsMain" id="t-text" type="text" name="ismain" placeholder="IsMain.." class="form-control" required> *@
+                                <select id="ismain" class="form-control  basic">
+                                    <option selected="selected">---</option>
+
+                                    <option>True</option>
+
+                                    <option>False</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hasgarage">HasGarage</label>
+                                    @* <input id="hasgarage" value="@Model?.HasGarage" id="t-text" type="text" name="hasgarage" placeholder="HasGarage.." class="form-control" required> *@
+                                <select id="hasgarage" class="form-control  basic">
+                                    <option selected="selected">--</option>
+
+                                    <option >True</option>
+                                    <option>False</option>
+                                </select>
+                             </div>
+
+
+
+
+
+                            
+                            <input type="submit" name="txt" class="mt-4 btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    @section CarAddStyles{
+        <!--  BEGIN CUSTOM STYLE FILE  -->
+        <link href="assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="plugins/select2/select2.min.css">
+        <!--  END CUSTOM STYLE FILE  -->
+    }
+
+
+    @section CarAddScripts {
+        <script src="assets/js/scrollspyNav.js"></script>
+        <script src="plugins/select2/select2.min.js"></script>
+        <script src="plugins/select2/custom-select2.js"></script>
+    }

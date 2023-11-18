@@ -22,8 +22,15 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @RenderSection("BrandListStyles",false)  @* Bu o demekdirki hemin view isleyende bunu ise sal *@
     @RenderSection("BrandAddStyles",false)
+    @RenderSection("BrandEditStyles",false)
     @RenderSection("ModelListStyles",false)
-
+    @RenderSection("ModelAddStyles",false)
+    @RenderSection("ModelEditStyles",false)
+    @RenderSection("UserListStyles",false)
+    @RenderSection("UserAddStyles",false)
+    @RenderSection("UserEditStyles",false)
+    @RenderSection("CarListStyles",false)
+    @RenderSection("CarAddStyles",false)
 </head>
 <body class="alt-menu sidebar-noneoverflow">
     <!-- BEGIN LOADER -->
@@ -108,17 +115,16 @@
 
 
                     <li class="menu">
-                        <a href="apps_mailbox.html" aria-expanded="false" class="dropdown-toggle">
+                        <a href="@Url.Action("List","User")" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <i data-feather="users"></i>
-
                                 <span>Users</span>
                             </div>
                         </a>
                     </li>
 
                     <li class="menu">
-                        <a href="apps_mailbox.html" aria-expanded="false" class="dropdown-toggle">
+                        <a href="@Url.Action("List","Car")" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <i class="fa-solid fa-car-side"></i>
                                 <span>Cars</span> 
@@ -129,7 +135,7 @@
                     <li class="menu">
                         <a href="@Url.Action("List","Model")" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                <i data-feather="anchor"></i>
                                 <span>Models</span>
                             </div>
                         </a>
@@ -138,7 +144,8 @@
                     <li class="menu">
                         <a href=@Url.Action("List","Brand") aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                <i data-feather="bold"></i>
+
                                 <span>Brands</span>
                             </div>
                         </a>
@@ -179,7 +186,16 @@
     </script>
     @RenderSection("BrandListScripts",false)
     @RenderSection("BrandAddScripts",false)
+    @RenderSection("BrandEditScripts",false)
     @RenderSection("ModelListScripts",false)
+    @RenderSection("ModelAddScripts",false)
+    @RenderSection("ModelEditScripts",false)
+    @RenderSection("UserListScripts",false)
+    @RenderSection("UserAddScripts",false)
+    @RenderSection("UserEditScripts",false)
+    @RenderSection("CarListScripts",false)
+    @RenderSection("CarAddScripts",false)
+
     <script src="~/admin/assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
